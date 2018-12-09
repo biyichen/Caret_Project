@@ -120,5 +120,19 @@ predict(gbmFit1, newdata=testx)
 table(testy, predict(gbmFit1, newdata=testx))
 ```
 #### testy      Active Inactive
-####  Active       61       13
- #### Inactive     12       45
+#### Active       61       13
+#### Inactive     12       45
+
+#### Use another model (treebagg method)
+```
+gbmFit2 <- train(trainx, trainy, method="treebag", trControl=fitControl)
+table(testy, predict(gbmFit2, newdata=testx))
+```
+#### testy      Active Inactive
+####   Active       64       10
+####   Inactive     13       44
+
+```
+models <- list(gbmFit1, gbmFit2);
+predValues <- extractPrediction(models, testX=testx, testY=testy)
+```
