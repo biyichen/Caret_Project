@@ -123,6 +123,11 @@ table(testy, predict(gbmFit1, newdata=testx))
 #### Active       61       13
 #### Inactive     12       45
 
+#### The classifier made a total of 131 predictions (e.g., 131 patients were being tested for the presence of that Multidrug resistance reversal agent). Out of those 131 cases, the classifier predicted "active" 73 times, and "inactive" 58 times. In reality, 74 patients in the sample have the Multidrug resistance reversal agent, and 57 patients do not. 
+#### Accuracy: Overall, how often is the classifier correct? (TP+TN)/total = (45+61)/131 = 0.809
+#### Misclassification Rate(Error Rate):0.191
+#### Precision: When it predicts inactive, how often is it correct? 0.776
+#### Prevalence: How often does the inactive condition actually occur in our sample? 57/131 = 0.435
 #### Use another model (treebagg method)
 ```
 gbmFit2 <- train(trainx, trainy, method="treebag", trControl=fitControl)
@@ -131,7 +136,11 @@ table(testy, predict(gbmFit2, newdata=testx))
 #### testy      Active Inactive
 ####   Active       64       10
 ####   Inactive     13       44
-
+#### The classifier made a total of 131 predictions (e.g., 131 patients were being tested for the presence of that Multidrug resistance reversal agent). Out of those 131 cases, the classifier predicted "active" 77 times, and "inactive" 54 times. In reality, 74 patients in the sample have the Multidrug resistance reversal agent, and 57 patients do not. 
+#### Accuracy: Overall, how often is the classifier correct? (TP+TN)/total = (44+64)/131 = 0.824
+#### Misclassification Rate(Error Rate):0.176
+#### Precision: When it predicts inactive, how often is it correct? 0.815
+#### Prevalence: How often does the inactive condition actually occur in our sample? 57/131 = 0.435
 ```
 models <- list(gbmFit1, gbmFit2);
 predValues <- extractPrediction(models, testX=testx, testY=testy)
