@@ -66,7 +66,7 @@ if(nrow(newdata2[!complete.cases(newdata2),])!=0)
 ```
 subsets <- seq(2, ncol(newdata2), by=2)
 ```
-#### define sbfControl
+#### define sbfControl (Control Object For Selection By Filtering (SBF)) Controls the execution of models with simple filters for feature selection.The external resampling method is 'cv', set 5 complete sets of folds to compute for repeated k-fold cross-validation only
 ```
 sbfControls_rf <- sbfControl(  functions = rfSBF,  method = 'cv',  repeats = 5)
 
